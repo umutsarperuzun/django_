@@ -13,3 +13,7 @@ def index(request):
 
 def course(request,item):
     return HttpResponse(course_dictionary.get(item,"Not found"))
+
+def multiply(request,x,y):
+    result=x*y
+    return HttpResponse(f"Your calculation result is {result}")
