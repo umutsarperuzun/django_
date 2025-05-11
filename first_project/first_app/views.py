@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404,HttpResponseNotFound
 
 course_dictionary = {
     "python":"Python Course Page",
@@ -12,7 +12,13 @@ def index(request):
 
 
 def course(request,item):
-    return HttpResponse(course_dictionary.get(item,"Not found"))
+    # return HttpResponse(course_dictionary.get(item,"Not found"))
+    try:
+        course=course_dictionary[item]
+        return HttpResponse(course)
+    except:
+        return HttpResponseNotFound("Not found! Please look for another course!")
+        # raise Http404("Not found! Please look for another course!")
 
 def multiply(request,x,y):
     result=x*y
