@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,Http404,HttpResponseNotFound
+from django.http import HttpResponse,Http404,HttpResponseNotFound,HttpResponseRedirect
 
 course_dictionary = {
     "python":"Python Course Page",
@@ -23,3 +23,7 @@ def course(request,item):
 def multiply(request,x,y):
     result=x*y
     return HttpResponse(f"Your calculation result is {result}")
+
+def course_number_view(request,num1):
+    if num1==10:
+        return HttpResponseRedirect("/first_app/kotlin")
